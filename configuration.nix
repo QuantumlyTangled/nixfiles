@@ -4,10 +4,18 @@
 
 { config, pkgs, ... }:
 
+let
+  hostname = import ./hostname.nix;
+  user = "quantum";
+in
 {
+  _module.args.user = user;
+  _module.args.hostname = hostname;
+
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
+      ./common.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -88,15 +96,6 @@
   services.xserver.desktopManager.plasma5.enable = true;
 
   services.xserver.videoDrivers = [ "nvidia" ];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.quantum = {
-    isNormalUser = true;
-    home = "/home/quantum";
-    extraGroups = [ "wheel"
-      "networkmanager" "audio" "sound" "input" "video" "tty"
-    ]; # Enable ‘sudo’ for the user.
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
