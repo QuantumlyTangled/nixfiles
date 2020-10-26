@@ -12,15 +12,11 @@ in
   _module.args.user = user;
   _module.args.hostname = hostname;
 
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./common.nix
-    ];
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  imports = [
+    ("/home/" + user + "/nixfiles/hosts/" + hostname + "/hardware-configuration.nix")
+    ./common.nix
+    ("/home/" + user + "/nixfiles/hosts/" + hostname)
+  ];
 
   # networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
