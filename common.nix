@@ -16,4 +16,8 @@
       ];
     };
   };
+
+  # Networking
+  networking.hostName = hostname;
+  networking.firewall.enable = false;
 }
