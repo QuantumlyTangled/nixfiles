@@ -20,4 +20,6 @@
   # Networking
   networking.hostName = hostname;
   networking.firewall.enable = false;
+
+  time.timeZone = "Europe/Ljubljana";
 }

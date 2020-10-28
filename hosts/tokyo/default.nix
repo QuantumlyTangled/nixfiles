@@ -16,4 +16,6 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.enp4s0.useDHCP = true;
+
+  nixpkgs.config.allowUnfree = true;
 }
