@@ -21,8 +21,15 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget vim neofetch htop discord firefox pulseaudioFull
-    lsof firefox-devedition-bin gparted
+    wget
+    vim
+    neofetch
+    htop
+    firefox
+    pulseaudioFull
+    lsof
+    gparted
+    bottom
   ];
   # Enable CUPS to print documents.
   # services.printing.enable = true;
